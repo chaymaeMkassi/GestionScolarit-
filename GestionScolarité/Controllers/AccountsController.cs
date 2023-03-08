@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using GestionScolarité.Data;
-using GestionScolarité.Models;
+using GestionScolarité.Models; 
 
 namespace GestionScolarité.Controllers
 {
