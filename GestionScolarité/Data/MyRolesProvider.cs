@@ -36,6 +36,7 @@ namespace WebApplicationAuthC.Data
         public override string[] GetAllRoles() //
         {
             return db.Accounts.Select(c => c.Role.ToString()).Distinct().ToArray();
+            
 
             /*AUTREMENT:
              List<string> liste = new List<string>();

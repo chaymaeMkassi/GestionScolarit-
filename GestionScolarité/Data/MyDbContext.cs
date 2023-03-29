@@ -21,6 +21,8 @@ namespace GestionScolarité.Data
         {
         }
         public DbSet<Account> Accounts { get; set; }
-
+        public DbSet<Section> Sections { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
+       // public DbSet<Grades> Grades { get; set; }
     }
 }
