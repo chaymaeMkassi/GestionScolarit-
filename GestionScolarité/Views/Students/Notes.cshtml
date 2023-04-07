@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Grade Sheet";
+}
+
+<h2>Grade Sheet</h2>
+<table class="table">
+    <tr>
+
+        
+        <th>@ViewBag.SubjectName</th>
+        <th>@ViewBag.note</th>
+    </tr>
+
+    @foreach (var item in ViewBag.test)
+    {
+
+        <tr>
+
+            <td>
+                @item.Key
+            </td>
+            <td>
+                @item.Value
+            </td>
+
+        </tr>
+    }
+
+</table>

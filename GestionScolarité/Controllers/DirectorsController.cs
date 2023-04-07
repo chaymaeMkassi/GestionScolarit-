@@ -6,153 +6,116 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 using GestionScolarité.Data;
-using GestionScolarité.Models; 
+using GestionScolarité.Models;
 
 namespace GestionScolarité.Controllers
 {
-    [Authorize(Roles = "administrator")]
-    public class AccountsController : Controller
+    public class DirectorsController : Controller
     {
         private MyDbContext db = new MyDbContext();
-        [AllowAnonymous]
-        public ActionResult Logout()
-        {
-            FormsAuthentication.SignOut();
-            return RedirectToAction("index","Home");
-        }
-
-        // GET: Login
-        [AllowAnonymous]
-        public ActionResult Login()
+        public ActionResult Home()
         {
             return View();
         }
 
-       
-        [HttpPost]
-        [AllowAnonymous]
-        // GET: Login
-        public ActionResult Login(Account account, string returnUrl)
-        {
-            Account c = db.Accounts.FirstOrDefault(item => item.UserName == account.UserName && item.Password == account.Password);
-            if (c != null)
-            {
-                FormsAuthentication.SetAuthCookie(c.UserName , false);
-                if (returnUrl != null)
-                    return Redirect(returnUrl);
-                if (c.Role == Role.administrator)
-                    return RedirectToAction("index", "Accounts");
-                else
-                    return RedirectToAction("index", "Home");
-            }
-            else
-            {
-                ViewBag.msgerror = "Error, Username or password is incorrect!";
-                return View();
-            }
-        }
-
-        // GET: Accounts
+        // GET: Directors
         public ActionResult Index()
         {
-            return View(db.Accounts.ToList());
+            return View(db.Directors.ToList());
         }
 
-        // GET: Accounts/Details/5
+        // GET: Directors/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
-            if (account == null)
+            Director director = db.Directors.Find(id);
+            if (director == null)
             {
                 return HttpNotFound();
             }
-            return View(account);
+            return View(director);
         }
 
-        // GET: Accounts/Create
-        [AllowAnonymous]
+        // GET: Directors/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Accounts/Create
+        // POST: Directors/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UserName,Password,Role")] Account account)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Email,Password,Role")] Director director)
         {
             if (ModelState.IsValid)
             {
-                db.Accounts.Add(account);
+                db.Users.Add(director);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(account);
+            return View(director);
         }
 
-        // GET: Accounts/Edit/5
+        // GET: Directors/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
-            if (account == null)
+            Director director = db.Directors.Find(id);
+            if (director == null)
             {
                 return HttpNotFound();
             }
-            return View(account);
+            return View(director);
         }
 
-        // POST: Accounts/Edit/5
+        // POST: Directors/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,UserName,Password,Role")] Account account)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Email,Password,Role")] Director director)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(account).State = EntityState.Modified;
+                db.Entry(director).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(account);
+            return View(director);
         }
 
-        // GET: Accounts/Delete/5
+        // GET: Directors/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
-            if (account == null)
+            Director director = db.Directors.Find(id);
+            if (director == null)
             {
                 return HttpNotFound();
             }
-            return View(account);
+            return View(director);
         }
 
-        // POST: Accounts/Delete/5
+        // POST: Directors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Account account = db.Accounts.Find(id);
-            db.Accounts.Remove(account);
+            Director director = db.Directors.Find(id);
+            db.Users.Remove(director);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

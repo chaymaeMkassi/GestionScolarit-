@@ -35,22 +35,14 @@ namespace WebApplicationAuthC.Data
 
         public override string[] GetAllRoles() //
         {
-            return db.Accounts.Select(c => c.Role.ToString()).Distinct().ToArray();
-            
-
-            /*AUTREMENT:
-             List<string> liste = new List<string>();
-             foreach (var c in db.Accounts)
-             {
-                 if(!liste.Contains(c.Role))
-                     liste.Add(c.Role);
-             }
-             return liste.ToArray();*/
+            return db.Users.Select(c => c.Role.ToString()).Distinct().ToArray();
+           
+           
         }
 
-        public override string[] GetRolesForUser(string username) //
+        public override string[] GetRolesForUser(string id) //
         {
-            return db.Accounts.Where(c => c.UserName == username).Select(c => c.Role.ToString()).Distinct().ToArray();
+            return db.Users.Where(c => c.Id.ToString() == id).Select(c => c.Role.ToString()).Distinct().ToArray();
         }
 
         public override string[] GetUsersInRole(string roleName)
@@ -58,10 +50,11 @@ namespace WebApplicationAuthC.Data
             throw new NotImplementedException();
         }
 
-        public override bool IsUserInRole(string username, string roleName) //
+        public override bool IsUserInRole(string id, string roleName) //
         {
-            return db.Accounts.Where(c => c.UserName == username && c.Role.ToString() == roleName).Any();
+            return db.Users.Where(c => c.Id.ToString() == id && c.Role.ToString() == roleName).Any();
         }
+        
 
         public override void RemoveUsersFromRoles(string[] usernames, string[] roleNames)
         {

@@ -26,17 +26,16 @@
 
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li> <a> Welcome @User.Identity.Name </a></li>
-                        <li>@Html.ActionLink("Logout", "Logout", "Accounts")</li>
-                        if (User.Identity.Name == "administrator")
-                        {
-                            <li>@Html.ActionLink("Accounts Manager", "index", "Accounts")</li>
-                        }
+                        
+                        <li>@Html.ActionLink("Logout", "Logout", "Users")</li>
+                        
+                        <li>@Html.ActionLink("Profile", "Details/" + User.Identity.Name, "Users")</li>
+
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Login", "Login", "Accounts")</li>
-                        <li>@Html.ActionLink("Signup", "Create", "Accounts")</li>
+                        <li>@Html.ActionLink("Login", "Login", "Users")</li>
+                        <li>@Html.ActionLink("Signup", "Create", "Users")</li>
                     }
                 </ul>
             </div>
