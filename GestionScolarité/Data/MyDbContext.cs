@@ -20,9 +20,24 @@ namespace GestionScolarité.Data
         public MyDbContext() : base("name=MyDbContext")
         {
         }
-        public DbSet<Account> Accounts { get; set; }
+        
+
         public DbSet<Section> Sections { get; set; }
+
+        public DbSet<Student> Students { get; set; }
+
         public DbSet<Subject> Subjects { get; set; }
-       // public DbSet<Grades> Grades { get; set; }
+
+        public DbSet<Grade> Grades { get; set; }
+
+        public DbSet<User> Users { get; set; }
+
+        public DbSet<Administrator> Administrators { get; set; }
+
+        public DbSet<Director> Directors { get; set; }
+
+        public DbSet<Teacher> Teachers { get; set; }
+
+        public System.Data.Entity.DbSet<GestionScolarité.Models.TeacherSection> TeacherSections { get; set; }
     }
 }
