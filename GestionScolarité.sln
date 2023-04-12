@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionScolarité", "GestionScolarité\GestionScolarité.csproj", "{54854258-D92B-4F0E-8CF0-B207C52F4EF2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationClient", "WebApplicationClient\WebApplicationClient.csproj", "{F900DE45-DCFE-462B-9AF0-521C9778EF74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{54854258-D92B-4F0E-8CF0-B207C52F4EF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54854258-D92B-4F0E-8CF0-B207C52F4EF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54854258-D92B-4F0E-8CF0-B207C52F4EF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F900DE45-DCFE-462B-9AF0-521C9778EF74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F900DE45-DCFE-462B-9AF0-521C9778EF74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F900DE45-DCFE-462B-9AF0-521C9778EF74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F900DE45-DCFE-462B-9AF0-521C9778EF74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
