@@ -40,9 +40,42 @@ namespace GestionScolarité.Controllers
         // GET: Grades/Create
         public ActionResult Create()
         {
-            ViewBag.SectionId = new SelectList(db.TeacherSections.Where(c => c.TeacherId.ToString() == User.Identity.Name), "Id", "SubjectId");
-            //ViewBag.SubjectId = new SelectList(db.Subjects.Where(c => c.TeacherId.ToString() == User.Identity.Name), "Id", "Name");
-            //ViewBag.StudentId = new SelectList(db.Students.Where(s=>s.SectionId == ViewBag.SectionId.), "Id", "FirstName");
+            //IEnumerable<Student> students=
+            IEnumerable<TeacherSubject> Tsubjects = db.TeacherSubjects.Where(item => item.TeacherId.ToString() == User.Identity.Name);
+            
+            var query = from subject in db.Subjects
+                        join teacherSubjects in db.TeacherSubjects
+                        on subject.Id equals teacherSubjects.SubjectId
+                        
+                        select new Subject
+                        {
+                            Id = subject.Id,
+                            SubjectName = subject.SubjectName
+                           
+                        };
+            /*db.Students.Join(db.Departments,s => s.DepartmentId,d => d.DepartmentId,
+                (s, d) => new Student
+                {
+                    StudentId = s.StudentId,
+                    Name = s.Name,
+                    DepartmentId = d.DepartmentId,
+                    Department = d
+                })*/
+            IEnumerable<Subject> Subject = db.Subjects.ToList().Join(db.TeacherSubjects,t=> t.Id,s=>s.SubjectId,(t,s)=>new Subject
+            {
+                Id = t.Id,
+                SubjectName = t.SubjectName
+
+            });
+            IEnumerable<Student> students = db.Students.ToList().Join(db.TeacherSections, t => t.Id, s => s.SectionId, (t, s) => new Student
+            {
+                Id = t.Id,
+                FirstName = t.FirstName,
+                LastName = t.LastName
+    
+            });
+            ViewBag.StudentId = new SelectList(students, "Id", "FirstName");
+            ViewBag.SubjectId = new SelectList(Subject, "Id", "SubjectName");
             return View();
         }
 
@@ -59,8 +92,8 @@ namespace GestionScolarité.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            
-            ViewBag.StudentId = new SelectList(db.Students, "Id", "FirstName", grade.StudentId);
+
+            ViewBag.StudentId = new SelectList(db.Users, "Id", "FirstName", grade.StudentId);
             ViewBag.SubjectId = new SelectList(db.Subjects, "Id", "SubjectName", grade.SubjectId);
             return View(grade);
         }
@@ -77,8 +110,8 @@ namespace GestionScolarité.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.StudentId = new SelectList(db.Students, "Id", "FirstName", grade.StudentId);
-            ViewBag.SubjectId = new SelectList(db.Subjects, "Id", "Name", grade.SubjectId);
+            ViewBag.StudentId = new SelectList(db.Users, "Id", "FirstName", grade.StudentId);
+            ViewBag.SubjectId = new SelectList(db.Subjects, "Id", "SubjectName", grade.SubjectId);
             return View(grade);
         }
 
@@ -95,8 +128,8 @@ namespace GestionScolarité.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.StudentId = new SelectList(db.Students, "Id", "FirstName", grade.StudentId);
-            ViewBag.SubjectId = new SelectList(db.Subjects, "Id", "Name", grade.SubjectId);
+            ViewBag.StudentId = new SelectList(db.Users, "Id", "FirstName", grade.StudentId);
+            ViewBag.SubjectId = new SelectList(db.Subjects, "Id", "SubjectName", grade.SubjectId);
             return View(grade);
         }
 

@@ -47,7 +47,7 @@ namespace GestionScolarité.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name")] Section section)
+        public ActionResult Create([Bind(Include = "Id,SectionName")] Section section)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace GestionScolarité.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name")] Section section)
+        public ActionResult Edit([Bind(Include = "Id,SectionName")] Section section)
         {
             if (ModelState.IsValid)
             {
