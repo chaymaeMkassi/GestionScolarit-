@@ -6,7 +6,7 @@ using System.Web;
 
 namespace GestionScolarité.Models
 {
-    public class TeacherSection
+    public class TeacherSubject
     {
         public int Id { get; set; }
 
@@ -14,8 +14,8 @@ namespace GestionScolarité.Models
         public int? TeacherId { get; set; }
         public Teacher Teacher { get; set; }
 
-        [ForeignKey("Section")]
-        public int SectionId { get; set; }
-        public Section Section { get; set; }
+        [ForeignKey("Subject")]
+        public int SubjectId { get; set; }
+        public Subject Subject { get; set; }
     }
 }

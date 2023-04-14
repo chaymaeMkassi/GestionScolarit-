@@ -18,7 +18,7 @@ namespace GestionScolarité.Controllers
         // GET: TeacherSections
         public ActionResult Index()
         {
-            var teacherSections = db.TeacherSections.Include(t => t.Subject).Include(t => t.Teacher);
+            var teacherSections = db.TeacherSections.Include(t => t.Section).Include(t => t.Teacher);
             return View(teacherSections.ToList());
         }
 
@@ -40,8 +40,8 @@ namespace GestionScolarité.Controllers
         // GET: TeacherSections/Create
         public ActionResult Create()
         {
-            ViewBag.SubjectId = new SelectList(db.Subjects, "Id", "Name");
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "FirstName");
+            ViewBag.SectionId = new SelectList(db.Sections, "Id", "SectionName");
+            ViewBag.TeacherId = new SelectList(db.Users, "Id", "FirstName");
             return View();
         }
 
@@ -50,7 +50,7 @@ namespace GestionScolarité.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,TeacherId,SubjectId")] TeacherSection teacherSection)
+        public ActionResult Create([Bind(Include = "Id,TeacherId,SectionId")] TeacherSection teacherSection)
         {
             if (ModelState.IsValid)
             {
@@ -59,8 +59,8 @@ namespace GestionScolarité.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.SubjectId = new SelectList(db.Subjects, "Id", "Name", teacherSection.SubjectId);
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "FirstName", teacherSection.TeacherId);
+            ViewBag.SectionId = new SelectList(db.Sections, "Id", "SectionName", teacherSection.SectionId);
+            ViewBag.TeacherId = new SelectList(db.Users, "Id", "FirstName", teacherSection.TeacherId);
             return View(teacherSection);
         }
 
@@ -76,8 +76,8 @@ namespace GestionScolarité.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.SubjectId = new SelectList(db.Subjects, "Id", "Name", teacherSection.SubjectId);
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "FirstName", teacherSection.TeacherId);
+            ViewBag.SectionId = new SelectList(db.Sections, "Id", "SectionName", teacherSection.SectionId);
+            ViewBag.TeacherId = new SelectList(db.Users, "Id", "FirstName", teacherSection.TeacherId);
             return View(teacherSection);
         }
 
@@ -86,7 +86,7 @@ namespace GestionScolarité.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,TeacherId,SubjectId")] TeacherSection teacherSection)
+        public ActionResult Edit([Bind(Include = "Id,TeacherId,SectionId")] TeacherSection teacherSection)
         {
             if (ModelState.IsValid)
             {
@@ -94,8 +94,8 @@ namespace GestionScolarité.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.SubjectId = new SelectList(db.Subjects, "Id", "Name", teacherSection.SubjectId);
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "FirstName", teacherSection.TeacherId);
+            ViewBag.SectionId = new SelectList(db.Sections, "Id", "SectionName", teacherSection.SectionId);
+            ViewBag.TeacherId = new SelectList(db.Users, "Id", "FirstName", teacherSection.TeacherId);
             return View(teacherSection);
         }
 

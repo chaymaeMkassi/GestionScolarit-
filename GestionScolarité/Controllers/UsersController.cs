@@ -41,27 +41,34 @@ namespace GestionScolarité.Controllers
             if (u != null)
             {
                 FormsAuthentication.SetAuthCookie(u.Id.ToString(), false);
-                if (returnUrl != null)
-                    return Redirect(returnUrl);
+                /*if (returnUrl != null)
+                    return Redirect(returnUrl);*/
                 if (u.Role == Role.administrator)
                     return RedirectToAction("home", "Administrators");
                 else if (u.Role == Role.student)
                 {
-                    Student s = db.Students.FirstOrDefault(item => item.Id == user.Id);
-                    /*if(s.Status == StudentStatus.Rejected)
+                    Student s = db.Students.FirstOrDefault(item => item.Email == user.Email && item.Password == user.Password);
+                    if(s != null)
                     {
-                        //u.Role
-                        return RedirectToAction("home", "Students");
+                        if (s.Status == StudentStatus.Rejected)
+                        {
+                            return RedirectToAction("home2", "Students");
+                        }
+                        else if (s.Status == StudentStatus.Submitted)
+                        {
+                            return RedirectToAction("home", "Students");
+                        }
                     }
-                    else if (s.Status == StudentStatus.Submitted)
-                    {
-                        return RedirectToAction("home", "Students");
-                    }*/
-                    return RedirectToAction("home", "Students");
+                    
+                    return RedirectToAction("index", "home");
 
                 }
                 else if (u.Role == Role.director)
                     return RedirectToAction("home", "Directors");
+                else if (u.Role == null)
+                    return RedirectToAction("home2", "Students");
+                else if (u.Role == Role.teacher)
+                    return RedirectToAction("home", "Teachers");
                 else
                     return RedirectToAction("index", "Home");
             }
@@ -121,6 +128,7 @@ namespace GestionScolarité.Controllers
                     item.Role= Role.student;
                     item.Id= user.Id;
                     item.Status = StudentStatus.Rejected;
+                    item.Role = null;
                     db.Students.Add(item);
                 }
                 if (user.Role == Role.teacher)
@@ -130,7 +138,7 @@ namespace GestionScolarité.Controllers
                     item.LastName = user.LastName;
                     item.Email = user.Email;
                     item.Password = user.Password;
-                    item.Role = Role.student;
+                    item.Role = Role.teacher;
                     item.Id = user.Id;
                     db.Teachers.Add(item);
                 }
@@ -141,7 +149,7 @@ namespace GestionScolarité.Controllers
                     item.LastName = user.LastName;
                     item.Email = user.Email;
                     item.Password = user.Password;
-                    item.Role = Role.student;
+                    item.Role = Role.director;
                     item.Id = user.Id;
                     db.Directors.Add(item);
                 }
@@ -152,7 +160,7 @@ namespace GestionScolarité.Controllers
                     item.LastName = user.LastName;
                     item.Email = user.Email;
                     item.Password = user.Password;
-                    item.Role = Role.student;
+                    item.Role = Role.administrator;
                     item.Id = user.Id;
                     db.Administrators.Add(item);
                 }

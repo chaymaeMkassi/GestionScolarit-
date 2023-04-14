@@ -12,6 +12,7 @@ namespace GestionScolarité.Models
         teacher,
         student,
         director
+        
     }
     public class User
     {
@@ -26,7 +27,7 @@ namespace GestionScolarité.Models
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        public Role Role { get; set; }
+        public Role? Role { get; set; }
 
     }
 }

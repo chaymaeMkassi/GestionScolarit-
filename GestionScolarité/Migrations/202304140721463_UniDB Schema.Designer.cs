@@ -13,7 +13,7 @@ namespace GestionScolarité.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202304070756076_UniDB Schema"; }
+            get { return "202304140721463_UniDB Schema"; }
         }
         
         string IMigrationMetadata.Source

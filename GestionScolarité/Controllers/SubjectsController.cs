@@ -18,8 +18,7 @@ namespace GestionScolarité.Controllers
         // GET: Subjects
         public ActionResult Index()
         {
-            var subjects = db.Subjects.Include(s => s.Teacher);
-            return View(subjects.ToList());
+            return View(db.Subjects.ToList());
         }
 
         // GET: Subjects/Details/5
@@ -40,7 +39,6 @@ namespace GestionScolarité.Controllers
         // GET: Subjects/Create
         public ActionResult Create()
         {
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "FirstName");
             return View();
         }
 
@@ -49,7 +47,7 @@ namespace GestionScolarité.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,TeacherId")] Subject subject)
+        public ActionResult Create([Bind(Include = "Id,SubjectName")] Subject subject)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +56,6 @@ namespace GestionScolarité.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "FirstName", subject.TeacherId);
             return View(subject);
         }
 
@@ -74,7 +71,6 @@ namespace GestionScolarité.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "FirstName", subject.TeacherId);
             return View(subject);
         }
 
@@ -83,7 +79,7 @@ namespace GestionScolarité.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,TeacherId")] Subject subject)
+        public ActionResult Edit([Bind(Include = "Id,SubjectName")] Subject subject)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +87,6 @@ namespace GestionScolarité.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "FirstName", subject.TeacherId);
             return View(subject);
         }
 

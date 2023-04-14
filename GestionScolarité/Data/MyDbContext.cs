@@ -39,5 +39,7 @@ namespace GestionScolarité.Data
         public DbSet<Teacher> Teachers { get; set; }
 
         public System.Data.Entity.DbSet<GestionScolarité.Models.TeacherSection> TeacherSections { get; set; }
+
+        public System.Data.Entity.DbSet<GestionScolarité.Models.TeacherSubject> TeacherSubjects { get; set; }
     }
 }

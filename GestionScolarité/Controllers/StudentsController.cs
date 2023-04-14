@@ -11,16 +11,25 @@ using GestionScolarité.Models;
 
 namespace GestionScolarité.Controllers
 {
+
+    [Authorize]
     public class StudentsController : Controller
     {
         private MyDbContext db = new MyDbContext();
 
+        [Authorize(Roles = "student")]
         public ActionResult Home()
         {
             return View();
         }
+        [AllowAnonymous]
+        public ActionResult Home2()
+        {
+            return View();
+        }
 
-       public ActionResult Notes(int? id)
+        [Authorize(Roles = "student")]
+        public ActionResult Notes(int? id)
         {
             var grades = db.Grades.Where(c => c.Student.Id == id).Select(c => c).ToArray();
 
@@ -30,7 +39,7 @@ namespace GestionScolarité.Controllers
             var i =0;
             foreach(var item in sId)
             {
-                string[] subject = db.Subjects.Where(c => c.Id.ToString() == item.ToString()).Select(c => c.Name.ToString()).ToArray();
+                string[] subject = db.Subjects.Where(c => c.Id.ToString() == item.ToString()).Select(c => c.SubjectName.ToString()).ToArray();
                 data.Add(subject[0].ToString(), note[i]);
                 i++;
             }
@@ -42,6 +51,7 @@ namespace GestionScolarité.Controllers
         }
 
         // GET: Students
+        [Authorize(Roles = "administrator")]
         public ActionResult Index()
         {
             var users = db.Students.Include(s => s.Section);

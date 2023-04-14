@@ -7,27 +7,11 @@
     <div class="col-md-4">
         <h2>Administrators Managment</h2>
         <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p class="btn btn-default">@Html.ActionLink("Admins", "Index", "Administrators") &raquo;</p>
+        <p class="btn btn-default">@Html.ActionLink("Notes", "Index", "Grades") &raquo;</p>
     </div>
+
     <div class="col-md-4">
-        <h2>Teachers</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p class="btn btn-default">@Html.ActionLink("Teachers", "Index", "Teachers")&raquo;</p>
+        <h2>Profile</h2>
+        <p class="btn btn-default">@Html.ActionLink("Profile", "Details/" + User.Identity.Name, "Teachers") &raquo;</p>
     </div>
-    <div class="col-md-4">
-        <h2>Students</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p class="btn btn-default">@Html.ActionLink("Students", "Index", "Students")&raquo;</p>
-    </div>
-    <div class="col-md-6">
-        <h2>Subjects</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p class="btn btn-default">@Html.ActionLink("Subjects", "Index", "Subjects")&raquo;</p>
-    </div>
-    <div class="col-md-6">
-        <h2>Sections</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p class="btn btn-default">@Html.ActionLink("Sections", "Index", "Sections")&raquo;</p>
-    </div>
-    
 </div>

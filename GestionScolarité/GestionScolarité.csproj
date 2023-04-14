@@ -133,6 +133,7 @@
     <Compile Include="Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Controllers\TeacherSectionsController.cs" />
+    <Compile Include="Controllers\TeacherSubjectsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Data\MyDbContext.cs" />
     <Compile Include="Data\MyRolesProvider.cs" />
@@ -143,9 +144,9 @@
     <Compile Include="Migrations\202303081516468__test.designer.cs">
       <DependentUpon>202303081516468__test.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202304070756076_UniDB Schema.cs" />
-    <Compile Include="Migrations\202304070756076_UniDB Schema.designer.cs">
-      <DependentUpon>202304070756076_UniDB Schema.cs</DependentUpon>
+    <Compile Include="Migrations\202304140721463_UniDB Schema.cs" />
+    <Compile Include="Migrations\202304140721463_UniDB Schema.designer.cs">
+      <DependentUpon>202304140721463_UniDB Schema.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrator.cs" />
@@ -153,6 +154,7 @@
     <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Models\TeacherSection.cs" />
+    <Compile Include="Models\TeacherSubject.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Section.cs" />
     <Compile Include="Models\Student.cs" />
@@ -241,21 +243,11 @@
     <Content Include="Views\Students\Details.cshtml" />
     <Content Include="Views\Students\Edit.cshtml" />
     <Content Include="Views\Students\Index.cshtml" />
-    <Content Include="Views\TeacherSections\Create.cshtml" />
-    <Content Include="Views\TeacherSections\Delete.cshtml" />
-    <Content Include="Views\TeacherSections\Details.cshtml" />
-    <Content Include="Views\TeacherSections\Edit.cshtml" />
-    <Content Include="Views\TeacherSections\Index.cshtml" />
     <Content Include="Views\Sections\Create.cshtml" />
     <Content Include="Views\Sections\Delete.cshtml" />
     <Content Include="Views\Sections\Details.cshtml" />
     <Content Include="Views\Sections\Edit.cshtml" />
     <Content Include="Views\Sections\Index.cshtml" />
-    <Content Include="Views\Subjects\Create.cshtml" />
-    <Content Include="Views\Subjects\Delete.cshtml" />
-    <Content Include="Views\Subjects\Details.cshtml" />
-    <Content Include="Views\Subjects\Edit.cshtml" />
-    <Content Include="Views\Subjects\Index.cshtml" />
     <Content Include="Views\Grades\Create.cshtml" />
     <Content Include="Views\Grades\Delete.cshtml" />
     <Content Include="Views\Grades\Details.cshtml" />
@@ -264,6 +256,22 @@
     <Content Include="Views\Students\Notes.cshtml" />
     <Content Include="Views\Students\Home.cshtml" />
     <Content Include="Views\Administrators\Home.cshtml" />
+    <Content Include="Views\Students\Home2.cshtml" />
+    <Content Include="Views\Subjects\Create.cshtml" />
+    <Content Include="Views\Subjects\Delete.cshtml" />
+    <Content Include="Views\Subjects\Details.cshtml" />
+    <Content Include="Views\Subjects\Edit.cshtml" />
+    <Content Include="Views\Subjects\Index.cshtml" />
+    <Content Include="Views\TeacherSections\Create.cshtml" />
+    <Content Include="Views\TeacherSections\Delete.cshtml" />
+    <Content Include="Views\TeacherSections\Details.cshtml" />
+    <Content Include="Views\TeacherSections\Edit.cshtml" />
+    <Content Include="Views\TeacherSections\Index.cshtml" />
+    <Content Include="Views\TeacherSubjects\Create.cshtml" />
+    <Content Include="Views\TeacherSubjects\Delete.cshtml" />
+    <Content Include="Views\TeacherSubjects\Details.cshtml" />
+    <Content Include="Views\TeacherSubjects\Edit.cshtml" />
+    <Content Include="Views\TeacherSubjects\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -274,8 +282,8 @@
     <EmbeddedResource Include="Migrations\202303081516468__test.resx">
       <DependentUpon>202303081516468__test.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304070756076_UniDB Schema.resx">
-      <DependentUpon>202304070756076_UniDB Schema.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202304140721463_UniDB Schema.resx">
+      <DependentUpon>202304140721463_UniDB Schema.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

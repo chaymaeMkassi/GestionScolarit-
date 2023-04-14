@@ -4,13 +4,16 @@
 
 
 <div class="row">
-    
+
     <div class="col-md-4">
         <h2>Grade Sheet</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
         <p class="btn btn-default">@Html.ActionLink("Marks", "notes/" + User.Identity.Name, "Students")&raquo;</p>
     </div>
+
     
-    
-    
+    <div class="col-md-4">
+        <h2>Profile</h2>
+        <p class="btn btn-default">@Html.ActionLink("Profile", "Details/" + User.Identity.Name, "Students") &raquo;</p>
+    </div>
+
 </div>

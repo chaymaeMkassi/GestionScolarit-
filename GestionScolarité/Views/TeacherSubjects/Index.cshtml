@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GestionScolarité.Models.TeacherSection>
+﻿@model IEnumerable<GestionScolarité.Models.TeacherSubject>
 
 @{
     ViewBag.Title = "Index";
@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Section.SectionName)
+            @Html.DisplayNameFor(model => model.Subject.SubjectName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Teacher.FirstName)
@@ -23,7 +23,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Section.SectionName)
+            @Html.DisplayFor(modelItem => item.Subject.SubjectName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Teacher.FirstName)

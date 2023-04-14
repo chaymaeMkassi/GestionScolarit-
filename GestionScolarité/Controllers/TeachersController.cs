@@ -16,6 +16,11 @@ namespace GestionScolarité.Controllers
 
         private MyDbContext db = new MyDbContext();
 
+        public ActionResult Home()
+        {
+            return View();
+        }
+
         // GET: Teachers
         public ActionResult Index()
         {

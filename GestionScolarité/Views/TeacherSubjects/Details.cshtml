@@ -1,4 +1,4 @@
-﻿@model GestionScolarité.Models.TeacherSection
+﻿@model GestionScolarité.Models.TeacherSubject
 
 @{
     ViewBag.Title = "Details";
@@ -7,15 +7,15 @@
 <h2>Details</h2>
 
 <div>
-    <h4>TeacherSection</h4>
+    <h4>TeacherSubject</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Section.SectionName)
+            @Html.DisplayNameFor(model => model.Subject.SubjectName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Section.SectionName)
+            @Html.DisplayFor(model => model.Subject.SubjectName)
         </dd>
 
         <dt>
