@@ -5,8 +5,12 @@
 
 <div class="row">
 
-    <p class="">@Html.ActionLink("Home", "home", "Directors") &raquo;</p>
-    <p class="">@Html.ActionLink("Profile", "Details/" + User.Identity.Name, "Directors") &raquo;</p>
+
+   
+    <div class="col-md-6">
+        <h2>Profile </h2>
+        <p class="btn btn-default">@Html.ActionLink("Profile", "Details/" + User.Identity.Name, "Directors") &raquo;</p>
+    </div>
 
     <div class="col-md-6">
         <h2>Administrators </h2>

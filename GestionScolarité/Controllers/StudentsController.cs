@@ -76,7 +76,7 @@ namespace GestionScolarité.Controllers
         // GET: Students/Create
         public ActionResult Create()
         {
-            ViewBag.SectionId = new SelectList(db.Sections, "Id", "Name");
+            ViewBag.SectionId = new SelectList(db.Sections, "Id", "SectionName");
             return View();
         }
 
@@ -94,7 +94,7 @@ namespace GestionScolarité.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.SectionId = new SelectList(db.Sections, "Id", "Name", student.SectionId);
+            ViewBag.SectionId = new SelectList(db.Sections, "Id", "SectionName", student.SectionId);
             return View(student);
         }
 
@@ -110,7 +110,7 @@ namespace GestionScolarité.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.SectionId = new SelectList(db.Sections, "Id", "Name", student.SectionId);
+            ViewBag.SectionId = new SelectList(db.Sections, "Id", "SectionName", student.SectionId);
             return View(student);
         }
 
@@ -127,7 +127,7 @@ namespace GestionScolarité.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.SectionId = new SelectList(db.Sections, "Id", "Name", student.SectionId);
+            ViewBag.SectionId = new SelectList(db.Sections, "Id", "SectionName", student.SectionId);
             return View(student);
         }
 
