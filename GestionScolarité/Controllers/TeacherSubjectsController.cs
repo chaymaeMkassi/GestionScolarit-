@@ -11,6 +11,7 @@ using GestionScolarité.Models;
 
 namespace GestionScolarité.Controllers
 {
+    [Authorize(Roles = "director")]
     public class TeacherSubjectsController : Controller
     {
         private MyDbContext db = new MyDbContext();

@@ -11,6 +11,8 @@ using GestionScolarité.Models;
 
 namespace GestionScolarité.Controllers
 {
+    
+    [Authorize(Roles = "teacher")]
     public class GradesController : Controller
     {
         private MyDbContext db = new MyDbContext();

@@ -4,16 +4,15 @@
 
 
 <div class="row">
+    <p class="">@Html.ActionLink("Home", "home", "Students") &raquo;</p>
+    <p class="">@Html.ActionLink("Profile", "Details/" + User.Identity.Name, "Students") &raquo;</p>
 
     <div class="col-md-4">
         <h2>Grade Sheet</h2>
         <p class="btn btn-default">@Html.ActionLink("Marks", "notes/" + User.Identity.Name, "Students")&raquo;</p>
     </div>
 
+
     
-    <div class="col-md-4">
-        <h2>Profile</h2>
-        <p class="btn btn-default">@Html.ActionLink("Profile", "Details/" + User.Identity.Name, "Students") &raquo;</p>
-    </div>
 
 </div>
